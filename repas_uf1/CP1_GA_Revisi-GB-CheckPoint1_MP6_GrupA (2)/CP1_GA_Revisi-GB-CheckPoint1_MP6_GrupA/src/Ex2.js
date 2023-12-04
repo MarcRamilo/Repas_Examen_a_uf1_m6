@@ -25,12 +25,11 @@ const getSleepHours = (day) => {
 const getActualSleepHours = () => {
   let horesTotals = 0;
   const dies = Object.keys(sleepHours);
-
   for (let i = 0; i < dies.length; i++) {
     const dia = dies[i];
     
     if (dia != 'saturday' && dia != 'sunday' && dia != 'idealHoursDay' ) {
-      horesTotals += getSleepHours[dia];
+      horesTotals += getSleepHours(dia);
     }
   }
   return horesTotals;
