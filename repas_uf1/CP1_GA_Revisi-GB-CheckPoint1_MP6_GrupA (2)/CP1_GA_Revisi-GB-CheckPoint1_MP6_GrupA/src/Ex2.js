@@ -28,8 +28,9 @@ const getActualSleepHours = () => {
 
   for (let i = 0; i < dies.length; i++) {
     const dia = dies[i];
-    if (dia != "saturday" && dia != "sunday" && dia != "idealHoursDay") {
-      horesTotals += getSleepHours(dia);
+    
+    if (dia != 'saturday' && dia != 'sunday' && dia != 'idealHoursDay' ) {
+      horesTotals += getSleepHours[dia];
     }
   }
   return horesTotals;
@@ -43,19 +44,20 @@ const getIdealSleepHours = () => {
 //Calculem les hores lliures tenint en compte les hores treballades i les hores
 //dormides realment sense caps de setmana.
 const getFreeTimeHours = () => {
-  const horesWeek = 24 * 5;
-  const horesWohrked = workHours * 5;
-  const horesFree = horesWeek - horesWohrked;
-  return horesFree;
+
+ const horesWeek = 24 * 5;
+ const horesWorked = workHours *5; 
+ return horesWeek - horesWorked - getSleepHours(); 
 };
 
 // Calculem el temps total que duren totes les activitats que ens hem proposat
 const calculateActivityTime = (activities) => {
-  let horessTotals = 0;
-  for (let i = 0; i < activities.length; i++) {
-    horesTotals += activities[i].time;
-  }
-  return horessTotals;
+    let horesTotals =0;
+    for (let i = 0; i < activities.length; i++) {
+       horesTotals += activities[i].time;
+      
+    }
+    return horesTotals;
 };
 
 // En funció del temps que tenim lliure, podem fer totes les activitats o no
